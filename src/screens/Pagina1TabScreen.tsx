@@ -4,7 +4,6 @@ import { styles } from '../theme/appTheme';
 import Icon from 'react-native-vector-icons/Ionicons';
 import { Box } from 'native-base';
 
-//! 6) Creamos la Screen #1 del BottomTab
 export const Pagina1TabScreen = () => {
   return (
     <View style={styles.marginGlobal}>

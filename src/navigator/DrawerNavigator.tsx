@@ -19,7 +19,6 @@ export const DrawerNavigator = () => {
       screenOptions={{ headerShown: false, drawerType: openDra()  }}
       drawerContent= { (props) => <CustomDrawer {...props} /> }
     >
-      {/* //! 8) Sustituimos el StackNavigator por el DrawerNavigator */}
       <Drawer.Screen name="BottomTabNavigator" component={BottomTabNavigator} />
       <Drawer.Screen name="SettingsPage" options={{ headerShown: true, title: 'Mis ajustes' }} component={SettingsPage} />
     </Drawer.Navigator>

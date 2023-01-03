@@ -8,9 +8,9 @@ import { StackNavigator } from './src/navigator/StackNavigator';
 
 export const App = () => {
   return (
-    //! 0) Envolvemos todo en el -NativeBaseProvider-
     <NativeBaseProvider>
         <NavigationContainer>
+          {/* //! 8) Envolvemos con la arrowFunction del context, el punto de inicio de la nevegacion */}
           <AppAuthContext>
             <DrawerNavigator />
           </AppAuthContext>
@@ -18,4 +18,4 @@ export const App = () => {
     </NativeBaseProvider>
   );
 };
- 
+   

@@ -1,4 +1,5 @@
-import { createContext } from "react";
+import { createContext, useReducer } from "react";
+import { authReducer } from "./authReducer";
 
 //! 1) Crear interface para regir la informacion que se manejara el context
 export interface AuthState {
@@ -24,8 +25,13 @@ export interface AuthContextProps {
 export const AuthContext =  createContext( {} as AuthContextProps );
 
 //! 5) Creamos el componente que PROVEERA el ESTADO
-export const AuthProvider = ({children}: {children: JSX.Element}) => {
+export const AuthProvider = ({children}: {children: JSX.Element}) => { 
+
+    //! 9) Creamos nuestro useReducer
+    const [ authState, dispatch ] = useReducer( authReducer , authInitialState);
+
     return (
+        //! 6) Retornamos el componente <AuthContext.Provider> cuyo value, establece aquello que veran los componentes hijos.
         <AuthContext.Provider
             value={{
                 authState: authInitialState,
