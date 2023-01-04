@@ -15,10 +15,11 @@ export const authInitialState: AuthState = {
     favoriteIcon: undefined,
 }
 
-//! 3) Creamos una nueva interface para definic -Que es- y -Como luce- el context
+//! 3) Creamos una nueva interface para definic -Que es- y -Como luce- el context #EXPOSICIONES#
 export interface AuthContextProps {
     authState: AuthState;
     singIn: () => void;
+    changeFavIcon: (iconName:string) => void;
 }
 
 //! 4) Crear el context en razon de la interface del paso anterior
@@ -35,12 +36,17 @@ export const AuthProvider = ({children}: {children: JSX.Element}) => {
         dispatch({type: 'singIn'});
     }
 
+    const changeFavIcon = (iconName: string) => {
+        dispatch({ type: 'changeFavIcon', payload: iconName });
+    }
+
     return (
         //! 6) Retornamos el componente <AuthContext.Provider> cuyo value, establece aquello que veran los componentes hijos.
         <AuthContext.Provider
             value={{
                 authState: authState,
                 singIn: singIn,
+                changeFavIcon: changeFavIcon,
             }}
         >
             { children }
