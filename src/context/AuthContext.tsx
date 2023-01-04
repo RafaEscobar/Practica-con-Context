@@ -30,12 +30,17 @@ export const AuthProvider = ({children}: {children: JSX.Element}) => {
     //! 9) Creamos nuestro useReducer
     const [ authState, dispatch ] = useReducer( authReducer , authInitialState);
 
+    //! 12) Creamos la funcion correspondiente al valor en el type 
+    const singIn = () => {
+        dispatch({type: 'singIn'});
+    }
+
     return (
         //! 6) Retornamos el componente <AuthContext.Provider> cuyo value, establece aquello que veran los componentes hijos.
         <AuthContext.Provider
             value={{
-                authState: authInitialState,
-                singIn: () => {}
+                authState: authState,
+                singIn: singIn,
             }}
         >
             { children }

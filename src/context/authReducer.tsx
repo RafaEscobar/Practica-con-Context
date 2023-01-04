@@ -1,11 +1,24 @@
 import React from 'react'
 import { AuthState } from './AuthContext';
 
+type AuthAction = { type: 'singIn' };
+
 //! 10) Creamos el arrowFunction para el Reducer, el cual establece los parametros: state y action.
 //* state de tipo AuthState (La primer interfaz del archivo Context)
 //* action de tipo: any por el momento
-export const authReducer = (state: AuthState, action: any) => {
-  return (
-    
-  )
+export const authReducer = (state: AuthState, action: AuthAction): AuthState => {
+  //! 11) Desarrollamos un switch en base al action y al type
+    switch(action.type) {
+      case 'singIn':
+        return{
+          ...state,
+          isLoggedIn: true,
+          username: 'no-username-yet',
+        }
+      break;
+      default:
+        return state;
+      break;
+    }
+  
 }
