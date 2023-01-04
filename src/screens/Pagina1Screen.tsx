@@ -33,7 +33,7 @@ export const Pagina1Screen = ({navigation}:Props) => {
         <TouchableOpacity
           style={{...styles.btn, backgroundColor: 'gray', }}
           onPress={()=> navigation.navigate('Extra', {
-            id: 1,
+            id: 1, 
             nombre: 'Rafael',
             apellidos: 'Escobar Gutierrez',
             edad: 22

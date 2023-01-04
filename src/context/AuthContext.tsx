@@ -20,7 +20,9 @@ export interface AuthContextProps {
     authState: AuthState;
     singIn: () => void;
     changeFavIcon: (iconName:string) => void;
+    //? 3=> Generar las exposiciones
     logout: () => void;
+    changeName: (userName:string) => void;
 }
 
 //! 4) Crear el context en razon de la interface del paso anterior
@@ -41,8 +43,12 @@ export const AuthProvider = ({children}: {children: JSX.Element}) => {
         dispatch({ type: 'changeFavIcon', payload: iconName });
     }
 
+    //? 4=> Crear las arrowFunction para los nuevos type, generando dentro el dispatch
     const logout = () => {
         dispatch({ type: 'logout' });
+    }
+    const changeName = (userName:string) => {
+        dispatch({ type: 'changeName', payload: userName });
     }
 
     return (
@@ -52,7 +58,9 @@ export const AuthProvider = ({children}: {children: JSX.Element}) => {
                 authState: authState,
                 singIn: singIn,
                 changeFavIcon: changeFavIcon,
+                //? 5=> Apuntar las exposiciones a las funciones creadas
                 logout: logout,
+                changeName: changeName,
             }}
         >
             { children }

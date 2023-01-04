@@ -4,7 +4,9 @@ import { AuthState } from './AuthContext';
 type AuthAction = 
 | { type: 'singIn' }
 | { type: 'changeFavIcon', payload: string }
-| { type: 'logout' };
+  //? 1=> Crear el type
+| { type: 'logout' }
+| { type: 'changeName', payload: string };
 
 //! 10) Creamos el arrowFunction para el Reducer, el cual establece los parametros: state y action.
 //* state de tipo AuthState (La primer interfaz del archivo Context)
@@ -25,14 +27,21 @@ export const authReducer = (state: AuthState, action: AuthAction): AuthState => 
           favoriteIcon: action.payload,
         }
       break;
+      //? 2=> Generar los -CASE- de acuerdo a los nuevos type
       case 'logout':
-        return{
+        return {
           ...state,
           isLoggedIn: false,
           username: 'x',
           favoriteIcon: undefined,
         }
       break;
+      case 'changeName': 
+        return {
+          ...state,
+          username: action.payload,
+        }
+      break
       default:
         return state;
       break;
