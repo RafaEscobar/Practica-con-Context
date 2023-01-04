@@ -3,7 +3,8 @@ import { AuthState } from './AuthContext';
 
 type AuthAction = 
 | { type: 'singIn' }
-| { type: 'changeFavIcon', payload: string };
+| { type: 'changeFavIcon', payload: string }
+| { type: 'logout' };
 
 //! 10) Creamos el arrowFunction para el Reducer, el cual establece los parametros: state y action.
 //* state de tipo AuthState (La primer interfaz del archivo Context)
@@ -22,6 +23,14 @@ export const authReducer = (state: AuthState, action: AuthAction): AuthState => 
         return {
           ...state,
           favoriteIcon: action.payload,
+        }
+      break;
+      case 'logout':
+        return{
+          ...state,
+          isLoggedIn: false,
+          username: 'x',
+          favoriteIcon: undefined,
         }
       break;
       default:

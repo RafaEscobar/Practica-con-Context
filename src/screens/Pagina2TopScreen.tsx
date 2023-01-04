@@ -6,13 +6,16 @@ import { Button } from 'native-base';
 
 export const Pagina2TopScreen = () => {
 
-  const { singIn, authState:{isLoggedIn} } = useContext(AuthContext);
+  const { singIn, authState:{isLoggedIn}, logout } = useContext(AuthContext);
 
   return (
     <View style={styles.marginGlobal}>
         <Text style={styles.titleGlobal}>NUMERO #2</Text> 
         {
-          !isLoggedIn ? <Button onPress={singIn}>Dar click</Button> : null
+          !isLoggedIn ? <Button onPress={singIn}>Ingresar</Button> : null
+        }
+        {
+          isLoggedIn ? <Button onPress={ logout }>Cerrar sesión</Button> : null
         }
     </View>
   )

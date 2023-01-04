@@ -20,6 +20,7 @@ export interface AuthContextProps {
     authState: AuthState;
     singIn: () => void;
     changeFavIcon: (iconName:string) => void;
+    logout: () => void;
 }
 
 //! 4) Crear el context en razon de la interface del paso anterior
@@ -40,6 +41,10 @@ export const AuthProvider = ({children}: {children: JSX.Element}) => {
         dispatch({ type: 'changeFavIcon', payload: iconName });
     }
 
+    const logout = () => {
+        dispatch({ type: 'logout' });
+    }
+
     return (
         //! 6) Retornamos el componente <AuthContext.Provider> cuyo value, establece aquello que veran los componentes hijos.
         <AuthContext.Provider
@@ -47,6 +52,7 @@ export const AuthProvider = ({children}: {children: JSX.Element}) => {
                 authState: authState,
                 singIn: singIn,
                 changeFavIcon: changeFavIcon,
+                logout: logout,
             }}
         >
             { children }
